@@ -1,4 +1,4 @@
-import { PiHeartStraightBold } from 'react-icons/lia';
+import { PiHeartStraightBold } from 'react-icons/pi';
 import { LuShoppingBasket } from 'react-icons/lu';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
