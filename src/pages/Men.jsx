@@ -1,5 +1,5 @@
 function Men() {
-  return <div></div>;
+  return <div>Men</div>;
 }
 
 export default Men;

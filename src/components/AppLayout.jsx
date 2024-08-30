@@ -6,12 +6,10 @@ const StyledLayout = styled.div`
   height: 100vh;
 `;
 
-const Main = styled.main`
-  padding: 4rem 4.8rem 6.4rem;
-`;
+const Main = styled.main``;
 
 const Container = styled.div`
-  max-width: 144rem;
+  max-width: 160rem;
   margin: 0 auto;
 `;
 
