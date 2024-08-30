@@ -1,4 +1,4 @@
-import { LiaHeart } from 'react-icons/lia';
+import { PiHeartStraightBold } from 'react-icons/lia';
 import { LuShoppingBasket } from 'react-icons/lu';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
@@ -81,7 +81,7 @@ function MainNav() {
         <CTAList>
           <li>
             <StyledNavLink to="/wishlist">
-              <LiaHeart />
+              <PiHeartStraightBold />
             </StyledNavLink>
           </li>
           <li>

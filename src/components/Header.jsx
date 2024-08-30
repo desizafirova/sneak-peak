@@ -7,6 +7,7 @@ const StyledHeader = styled.header`
   padding: 0 1.2rem;
   border-bottom: 1px solid var(--color-grey-100);
   position: sticky;
+  top: 95;
 `;
 
 function Header() {
