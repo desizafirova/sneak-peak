@@ -7,14 +7,12 @@ import StyledProductsGrid from '../components/ProductGrid';
 function AllProducts() {
   const {
     isLoading,
-    data: sneakers, // Сега данните се наричат "data"
+    data: sneakers,
     error,
   } = useQuery({
     queryKey: ['sneakers'],
     queryFn: getSneakers,
   });
-
-  console.log(sneakers);
 
   if (isLoading) return <Spinner />;
   if (error) return <div>Sneakers could not be loaded 💥</div>;
