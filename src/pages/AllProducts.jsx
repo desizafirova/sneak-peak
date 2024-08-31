@@ -1,17 +1,8 @@
-import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { getSneakers } from '../services/apiSneakers';
 import Spinner from '../components/Spinner';
 import ProductCard from '../components/ProductCard';
-
-const StyledProductsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 40rem);
-  justify-content: center;
-  align-items: center;
-  gap: 6rem;
-  margin: 10rem auto;
-`;
+import StyledProductsGrid from '../components/ProductGrid';
 
 function AllProducts() {
   const {
