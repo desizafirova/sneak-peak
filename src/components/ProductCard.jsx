@@ -8,8 +8,8 @@ const StyledProductCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50rem;
-  width: 40rem;
+  height: 40rem;
+  width: 30rem;
   background-color: var(--color-grey-50);
   border-radius: 1rem;
   overflow: hidden;
