@@ -11,7 +11,7 @@ function Men() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['sneakers'],
+    queryKey: ['menSneakers'],
     queryFn: getMenSneakers,
   });
 
