@@ -1,5 +1,8 @@
+import StyledProductsGrid from '../components/ProductGrid';
+
 function Men() {
-  return <div>Men</div>;
+  const { data: menSneakers, isLoading, error } = useMen;
+  return <StyledProductsGrid>{}</StyledProductsGrid>;
 }
 
 export default Men;
