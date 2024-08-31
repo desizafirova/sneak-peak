@@ -68,7 +68,7 @@ function ProductCard({ sneaker }) {
 
   return (
     <StyledProductCard>
-      <ProductImage src={image} />
+      {isLoading ? <Spinner /> : <ProductImage src={image} />}
       <WishlistButton>
         <Icon />
       </WishlistButton>
