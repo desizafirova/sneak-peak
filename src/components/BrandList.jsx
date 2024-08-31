@@ -17,10 +17,10 @@ const Img = styled.img`
 function BrandList() {
   return (
     <StyledBrandList>
-      <Img src="../../public/brandlist/adidas.svg" />
-      <Img src="../../public/brandlist/nike.svg" />
-      <Img src="../../public/brandlist/converse.png" />
-      <Img src="../../public/brandlist/vans.png" />
+      <Img src="/adidas.svg" />
+      <Img src="/nike.svg" />
+      <Img src="/converse.png" />
+      <Img src="/vans.png" />
     </StyledBrandList>
   );
 }
