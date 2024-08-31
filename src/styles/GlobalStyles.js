@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
   --color-rose-300: #fda4af;
   --color-rose-400: #fb7185;
   --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
   --color-rose-950: #4c0519;
 
   /* Yellow */

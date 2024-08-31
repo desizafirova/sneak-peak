@@ -1,4 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
 import GlobalStyles from './styles/GlobalStyles';
 import AppLayout from './components/AppLayout';
 import Homepage from './pages/Homepage';
@@ -8,9 +12,7 @@ import Wishlist from './pages/Wishlist';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
-import { Toaster } from 'react-hot-toast';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import AllProducts from './pages/AllProducts';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,12 +31,13 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="homepage" />} />
-            <Route path="homepage" element={<Homepage />} />
+            <Route path="/homepage" element={<Homepage />} />
             <Route path="/men" element={<Men />} />
             <Route path="/women" element={<Women />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/products" element={<AllProducts />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

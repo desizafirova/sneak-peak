@@ -64,7 +64,7 @@ function MainNav() {
     <nav>
       <NavList>
         <div>
-          <StyledNavLink exact to="/">
+          <StyledNavLink to="/">
             <Logo />
           </StyledNavLink>
         </div>
