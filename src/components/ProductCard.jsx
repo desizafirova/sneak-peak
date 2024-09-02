@@ -6,32 +6,40 @@ const StyledProductCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 40rem;
-  width: 30rem;
+  height: 50rem;
+  width: 35rem;
   background-color: var(--color-grey-50);
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-  position: relative;
+`;
+
+const ProductImageWrapper = styled.div`
+  height: 75%;
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
 `;
 
 const ProductImage = styled.img`
-  height: 85%;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  margin: 1rem;
-  border-radius: var(--border-radius-sm);
+  transition: transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const WishlistButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
   height: 4.2rem;
   border: none;
   background: #ffffff60;
   border-radius: var(--border-radius-sm);
   padding: 5px 10px;
   cursor: pointer;
+  align-self: flex-end;
 `;
 
 const Icon = styled(PiHeartStraightBold)`
@@ -45,7 +53,7 @@ const ButtonAddToCart = styled.button`
   border: none;
   color: var(--color-grey-100);
   background-color: var(--color-grey-700);
-  padding: 1.2rem 2.4rem;
+  padding: 0.8rem 1.6rem;
   border-radius: var(--border-radius-sm);
 
   &:hover {
@@ -60,21 +68,41 @@ const FlexInfo = styled.div`
   padding: 1rem;
 `;
 
+const TextFlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+`;
+const ProductTitle = styled.p`
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: left;
+`;
+const ProductPrice = styled.p`
+  font-size: 1.5rem;
+  text-align: left;
+`;
+
 function ProductCard({ sneaker }) {
   const { modelName, regularPrice, image } = sneaker;
 
   return (
     <StyledProductCard>
-      <ProductImage src={image} />
-      <WishlistButton>
-        <Icon />
-      </WishlistButton>
+      <ProductImageWrapper>
+        <ProductImage src={image} />
+      </ProductImageWrapper>
       <FlexInfo>
-        <div>
-          <p>{modelName}</p>
-          <p>Price: ${regularPrice}</p>
-        </div>
-        <ButtonAddToCart>Add to Cart</ButtonAddToCart>
+        <TextFlexContainer>
+          <ProductTitle>{modelName}</ProductTitle>
+          <ProductPrice>Price: ${regularPrice}</ProductPrice>
+          <ButtonAddToCart>Add to Cart</ButtonAddToCart>
+        </TextFlexContainer>
+        <WishlistButton>
+          <Icon />
+        </WishlistButton>
       </FlexInfo>
     </StyledProductCard>
   );
