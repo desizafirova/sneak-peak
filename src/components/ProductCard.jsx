@@ -1,8 +1,6 @@
 import { PiHeartStraightBold } from 'react-icons/pi';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useSneakers } from '../hooks/useSneakers';
-import Spinner from './Spinner';
 
 const StyledProductCard = styled.div`
   display: flex;
@@ -11,7 +9,7 @@ const StyledProductCard = styled.div`
   height: 40rem;
   width: 30rem;
   background-color: var(--color-grey-50);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-sm);
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
   position: relative;
@@ -20,6 +18,8 @@ const StyledProductCard = styled.div`
 const ProductImage = styled.img`
   height: 85%;
   object-fit: cover;
+  margin: 1rem;
+  border-radius: var(--border-radius-sm);
 `;
 
 const WishlistButton = styled.button`
@@ -29,7 +29,7 @@ const WishlistButton = styled.button`
   height: 4.2rem;
   border: none;
   background: #ffffff60;
-  border-radius: 5px;
+  border-radius: var(--border-radius-sm);
   padding: 5px 10px;
   cursor: pointer;
 `;
@@ -46,7 +46,7 @@ const ButtonAddToCart = styled.button`
   color: var(--color-grey-100);
   background-color: var(--color-grey-700);
   padding: 1.2rem 2.4rem;
-  border-radius: 5px;
+  border-radius: var(--border-radius-sm);
 
   &:hover {
     background-color: var(--color-grey-800);
@@ -62,13 +62,10 @@ const FlexInfo = styled.div`
 
 function ProductCard({ sneaker }) {
   const { modelName, regularPrice, image } = sneaker;
-  const { isLoading } = useSneakers();
-
-  if (isLoading) return <Spinner />;
 
   return (
     <StyledProductCard>
-      {isLoading ? <Spinner /> : <ProductImage src={image} />}
+      <ProductImage src={image} />
       <WishlistButton>
         <Icon />
       </WishlistButton>
