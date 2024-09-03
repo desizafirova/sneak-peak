@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const StyledHero = styled.div`
   position: relative;
   height: 90vh;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 `;
 
