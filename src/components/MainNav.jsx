@@ -3,6 +3,8 @@ import { LuShoppingBasket } from 'react-icons/lu';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from './Logo';
+import Modal from './Modal';
+import LoginForm from './LoginForm';
 
 const NavList = styled.ul`
   display: flex;
@@ -59,44 +61,67 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const Button = styled.button`
+  background: transparent;
+  color: var(--color-grey-600);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 1.2rem 2.4rem;
+  transition: all 0.3s;
+  font-weight: 500;
+
+  &:hover {
+    font-weight: 600;
+    color: var(--color-grey-800);
+  }
+`;
+
 function MainNav() {
   return (
-    <nav>
-      <NavList>
-        <div>
-          <StyledNavLink to="/">
-            <Logo />
-          </StyledNavLink>
-        </div>
+    <Modal>
+      <nav>
+        <NavList>
+          <div>
+            <StyledNavLink to="/">
+              <Logo />
+            </StyledNavLink>
+          </div>
 
-        <CategoryList>
-          <li>
-            <StyledNavLink to="/men">Men</StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/women">Women</StyledNavLink>
-          </li>
-        </CategoryList>
+          <CategoryList>
+            <li>
+              <StyledNavLink to="/men">Men</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/women">Women</StyledNavLink>
+            </li>
+          </CategoryList>
 
-        <CTAList>
-          <li>
-            <StyledNavLink to="/wishlist">
-              <PiHeartStraightBold />
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/cart">
-              <LuShoppingBasket />
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/login">
-              <span>Login</span>
-            </StyledNavLink>
-          </li>
-        </CTAList>
-      </NavList>
-    </nav>
+          <CTAList>
+            <li>
+              <StyledNavLink to="/wishlist">
+                <PiHeartStraightBold />
+              </StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/cart">
+                <LuShoppingBasket />
+              </StyledNavLink>
+            </li>
+            <li>
+              <Modal.Open opens="login">
+                <Button>Login</Button>
+                {/* <StyledNavLink to="/login">
+                  <span>Login</span>
+                </StyledNavLink> */}
+              </Modal.Open>
+            </li>
+          </CTAList>
+        </NavList>
+      </nav>
+      <Modal.Window name="login">
+        <LoginForm />
+      </Modal.Window>
+    </Modal>
   );
 }
 

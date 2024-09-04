@@ -2,7 +2,7 @@ import { cloneElement, createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import useOutsideClick from '../hooks/useOutsideClick';
+import { useOutsideClick } from '../hooks/useOutsideClick';
 import { HiXMark } from 'react-icons/hi2';
 import { createPortal } from 'react-dom';
 
@@ -31,7 +31,7 @@ const Overlay = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: none;
+  background-color: transparent;
   border: none;
   padding: 0.4rem;
   border-radius: var(--border-radius-sm);
@@ -93,18 +93,18 @@ function Window({ children, name }) {
 }
 
 Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  onClose: PropTypes.func,
 };
 
 Open.propTypes = {
-  children: PropTypes.node.isRequired,
-  opens: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  opens: PropTypes.string,
 };
 
 Window.propTypes = {
-  children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  name: PropTypes.string,
 };
 
 Modal.Open = Open;
