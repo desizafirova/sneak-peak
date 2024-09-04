@@ -6,9 +6,7 @@ const StyledLayout = styled.div`
   height: 100vh;
 `;
 
-const Main = styled.main``;
-
-const Container = styled.div`
+const Main = styled.main`
   margin: 0 auto;
 `;
 
@@ -17,9 +15,9 @@ function AppLayout() {
     <StyledLayout>
       <Header />
       <Main>
-        <Container>
+        <Main>
           <Outlet />
-        </Container>
+        </Main>
       </Main>
     </StyledLayout>
   );

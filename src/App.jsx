@@ -30,7 +30,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="homepage" />} />
+            <Route index element={<Navigate replace to="/homepage" />} />
             <Route path="/homepage" element={<Homepage />} />
             <Route path="/men" element={<Men />} />
             <Route path="/women" element={<Women />} />
@@ -53,7 +53,7 @@ function App() {
             duration: 3000,
           },
           error: {
-            durration: 5000,
+            duration: 5000,
           },
           style: {
             fontSize: '16px',

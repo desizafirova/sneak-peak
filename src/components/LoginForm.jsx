@@ -1,11 +1,11 @@
-import Form from './Form';
 import Input from './Input';
 import FormRowVertical from './FormRowVertical';
 import styled from 'styled-components';
-import Logo from './Logo';
+
 import { useLogin } from '../hooks/useLogin';
 import SpinnerMini from './SpinnerMini';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const LoginButton = styled.button`
   background: var(--color-rose-500);
@@ -21,9 +21,12 @@ const LoginButton = styled.button`
   }
 `;
 
-const FormContainer = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+const FormContainer = styled.form`
+  width: 50rem;
+  padding: 3rem;
+  border: 1px solid var(--color-rose-100);
+  border-radius: var(--border-radius-md);
+  margin: 15rem auto;
 `;
 
 function LoginForm() {
@@ -49,35 +52,36 @@ function LoginForm() {
   }
 
   return (
-    <Form type="modal" onSubmit={handleLogin}>
-      <Logo />
-      <FormContainer>
-        <FormRowVertical label="Email address">
-          <Input
-            type="email"
-            id="email"
-            autoComplete="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormRowVertical>
-        <FormRowVertical label="Password">
-          <Input
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormRowVertical>
-      </FormContainer>
+    <FormContainer onSubmit={handleLogin}>
+      <FormRowVertical label="Email address">
+        <Input
+          type="email"
+          id="email"
+          autoComplete="username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </FormRowVertical>
+      <FormRowVertical label="Password">
+        <Input
+          type="password"
+          id="password"
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </FormRowVertical>
       <FormRowVertical>
         <LoginButton type="submit" disabled={isLoading}>
           {isLoading ? <SpinnerMini /> : 'Login'}
         </LoginButton>
       </FormRowVertical>
-    </Form>
+    </FormContainer>
   );
 }
+
+LoginForm.propTypes = {
+  closeModal: PropTypes.func,
+};
 
 export default LoginForm;

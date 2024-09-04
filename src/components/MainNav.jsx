@@ -3,8 +3,9 @@ import { LuShoppingBasket } from 'react-icons/lu';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from './Logo';
-import Modal from './Modal';
-import LoginForm from './LoginForm';
+import { useUser } from '../hooks/useUser';
+import { useLogout } from '../hooks/useLogout';
+import SpinnerMini from './SpinnerMini';
 
 const NavList = styled.ul`
   display: flex;
@@ -37,7 +38,6 @@ const StyledNavLink = styled(NavLink)`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
@@ -61,67 +61,51 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Button = styled.button`
-  background: transparent;
-  color: var(--color-grey-600);
-  border: none;
-  border-radius: var(--border-radius-md);
-  padding: 1.2rem 2.4rem;
-  transition: all 0.3s;
-  font-weight: 500;
-
-  &:hover {
-    font-weight: 600;
-    color: var(--color-grey-800);
-  }
-`;
-
 function MainNav() {
+  const { isAuthenticated } = useUser();
+  const { logout, isLoading } = useLogout();
+
   return (
-    <Modal>
-      <nav>
-        <NavList>
-          <div>
-            <StyledNavLink to="/">
-              <Logo />
+    <nav>
+      <NavList>
+        <div>
+          <StyledNavLink to="/">
+            <Logo />
+          </StyledNavLink>
+        </div>
+
+        <CategoryList>
+          <li>
+            <StyledNavLink to="/men">Men</StyledNavLink>
+          </li>
+          <li>
+            <StyledNavLink to="/women">Women</StyledNavLink>
+          </li>
+        </CategoryList>
+
+        <CTAList>
+          <li>
+            <StyledNavLink to="/wishlist">
+              <PiHeartStraightBold />
             </StyledNavLink>
-          </div>
-
-          <CategoryList>
-            <li>
-              <StyledNavLink to="/men">Men</StyledNavLink>
-            </li>
-            <li>
-              <StyledNavLink to="/women">Women</StyledNavLink>
-            </li>
-          </CategoryList>
-
-          <CTAList>
-            <li>
-              <StyledNavLink to="/wishlist">
-                <PiHeartStraightBold />
+          </li>
+          <li>
+            <StyledNavLink to="/cart">
+              <LuShoppingBasket />
+            </StyledNavLink>
+          </li>
+          <li>
+            {isAuthenticated ? (
+              <StyledNavLink to="/" onClick={logout}>
+                {isLoading ? <SpinnerMini /> : 'Logout'}
               </StyledNavLink>
-            </li>
-            <li>
-              <StyledNavLink to="/cart">
-                <LuShoppingBasket />
-              </StyledNavLink>
-            </li>
-            <li>
-              <Modal.Open opens="login">
-                <Button>Login</Button>
-                {/* <StyledNavLink to="/login">
-                  <span>Login</span>
-                </StyledNavLink> */}
-              </Modal.Open>
-            </li>
-          </CTAList>
-        </NavList>
-      </nav>
-      <Modal.Window name="login">
-        <LoginForm />
-      </Modal.Window>
-    </Modal>
+            ) : (
+              <StyledNavLink to="/login">Login</StyledNavLink>
+            )}
+          </li>
+        </CTAList>
+      </NavList>
+    </nav>
   );
 }
 
